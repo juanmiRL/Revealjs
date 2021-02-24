@@ -3,17 +3,26 @@ index
 author: Juan Miguel Rodriguez   
 date: 24/02/2021
 autosize: true
+font-import:  https://fonts.googleapis.com/css?family=Caveat
+font-family : Shippori Mincho
+css: custom css
 
 First Slide
 ========================================================
+type:exclaim
 incremental:true
 transition:fade
 
 For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
 
 - Bullet 1
+<li class= "fragment fade-in">Hello<li>
 - Bullet 2
 - Bullet 3
+
+Slide With alert
+========================================================
+type: alert
 
 Slide With Code
 ========================================================
@@ -22,9 +31,38 @@ Slide With Code
 summary(cars)
 ```
 
+Slide With two columns
+========================================================
+first column
+```{r}
+1:10
+```
+***
+second column
+```{r}
+(1:10)^2
+```
+
+
 Slide With Plot
 ========================================================
 
 ```{r, echo=FALSE}
-plot(cars)
+library(plotly)
+x<-c(1:20)
+y<-x*x
+data<-as.data.frame(x,y)
+p<-plot_ly(data,x=~x,y=~y,name="cuadratic",type="scatter")
+htmlwidgets::saveWidget(p,"plotly.html")
+
 ```
+<style>
+  .p_iframe iframe {
+    width:90%;
+    height:576px;
+}
+</style>
+
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly.html"></iframe>
+</div>
